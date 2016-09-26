@@ -1,4 +1,4 @@
-from bottle import route, run, static_file, response
+from bottle import route, run, static_file, response, template
 import os
 
 
@@ -32,9 +32,10 @@ def server_static():
     response.content_type = 'text/html; charset=UTF8'
     return static_file("vk.html", root=".")
 
-@route("/testd")
-def server_static():
-    return static_file("testd.py", root=".")
+@route("/love/<i>")
+def server_static(i):
+    return template("templates/test.tpl",a=int(i))
+
 
 
 
